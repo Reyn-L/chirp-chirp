@@ -3,7 +3,7 @@ function chirp(n){
   let cheep = "chirp ";
 
   if (n === 0) {
-    return " ";
+    return "";
   }
   let cheepStr = chirp(--n);
   cheepStr += cheep;
