@@ -1,3 +1,5 @@
+
+/*jshint esversion: 6*/
 var sample_text = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod \
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, \
 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo \
@@ -13,12 +15,22 @@ var counter = {
   "q" : 0,  "r" : 0,  "s" : 0,  "t" : 0,
   "u" : 0,  "v" : 0,  "w" : 0,  "x" : 0,
   "y" : 0,  "z" : 0
-}
+};
 
 function countLetters(counter, sample_text){
-  // FIX ME
+let text = sample_text.toLowerCase();
+console.log(text);
+if(text.length === 0) {
+  return counter;
 }
+if(counter.hasOwnProperty(text.substring(0, 1))){
+  counter[text.substring(0,1)]++;
+return countLetters(counter, sample_text.substring(1,sample_text.length));
 
+} else {
+  return countLetters(counter, sample_text.substring(1,sample_text.length));
+}
+}
 $(document).ready(function(){
   countLetters(counter, sample_text);
   $("#result").html(JSON.stringify(counter));
